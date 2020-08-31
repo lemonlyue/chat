@@ -121,6 +121,9 @@
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/service-governance" />
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/consul" />
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/rpc" />
+      <path value="$PROJECT_DIR$/service_1/vendor/markrogoyski/math-php" />
+      <path value="$PROJECT_DIR$/service_1/vendor/hyperf/json-rpc" />
+      <path value="$PROJECT_DIR$/service_1/vendor/hyperf/load-balancer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

@@ -37,6 +37,8 @@
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/http-server" />
+      <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/json-rpc" />
+      <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/load-balancer" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/logger" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/memory" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/hyperf/model-listener" />
@@ -54,6 +56,7 @@
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/laminas/laminas-mime" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/laminas/laminas-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/laminas/laminas-zendframework-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/markrogoyski/math-php" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/service_1/vendor/myclabs/deep-copy" />

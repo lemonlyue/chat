@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'uri' => 'http://192.168.31.108:8500',
+    'uri' => 'http://consul_server:8500',
 ];

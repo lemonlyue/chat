@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="109800cd-9f30-4858-b3c9-22a228d04d51" name="Default Changelist" comment="" />
+    <list default="true" id="109800cd-9f30-4858-b3c9-22a228d04d51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/micro-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/micro-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_1/app/JsonRpc/CalculatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/app/JsonRpc/CalculatorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_1/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_1/config/autoload/consul.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/config/autoload/consul.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_1/config/autoload/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/config/autoload/server.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +23,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -135,10 +148,15 @@
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/service-governance" />
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/consul" />
       <path value="$PROJECT_DIR$/service_1/vendor/hyperf/rpc" />
+      <path value="$PROJECT_DIR$/service_1/vendor/markrogoyski/math-php" />
+      <path value="$PROJECT_DIR$/service_1/vendor/hyperf/json-rpc" />
+      <path value="$PROJECT_DIR$/service_1/vendor/hyperf/load-balancer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gdivD3WYeD0GDrg6KNCkmjGV05" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../php-microservice-demo" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -175,11 +193,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598451098902</updated>
-      <workItem from="1598451102213" duration="6176000" />
+      <workItem from="1598451102213" duration="11051000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

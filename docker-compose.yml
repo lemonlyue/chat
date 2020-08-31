@@ -4,6 +4,8 @@ services:
   consul:
     image: consul:latest
     container_name: consul_server
+    networks:
+      - microservice
     ports:
       - "8500:8500"
 
@@ -91,8 +93,8 @@ services:
       - microservice
     volumes:
       - ./service_1:/var/www
-    ports:
-      - "9501:9501"
+#    ports:
+#      - "9501:9501"
 #    command: "php bin/hyperf.php start"
     tty: true
 
@@ -104,8 +106,8 @@ services:
       - microservice
     volumes:
       - ./service_2:/var/www
-    ports:
-      - "9502:9502"
+#    ports:
+#      - "9502:9502"
 #    command: "php bin/hyperf.php start"
     tty: true
 
