@@ -1,0 +1,117 @@
+version: '3'
+
+services:
+  consul:
+    image: consul:latest
+    container_name: consul_server
+    ports:
+      - "8500:8500"
+
+  kong-database:
+    image: postgres:9.6
+    container_name: kong_database_server
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - POSTGRES_PASSWORD=kong
+    networks:
+      - microservice
+    volumes:
+      - "db-data-kong-postgres:/var/lib/postgresql/data"
+
+  kong-migrations:
+    container_name: kong_migrations
+    image: kong
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_PASSWORD=kong
+      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+    command: kong migrations bootstrap
+    restart: on-failure
+    networks:
+      - microservice
+    depends_on:
+      - kong-database
+
+  kong:
+    image: kong
+    container_name: kong_server
+    environment:
+      - LC_CTYPE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_USER=kong
+      - KONG_PG_PASSWORD=kong
+      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    restart: on-failure
+    ports:
+      - 8000:8000
+      - 8443:8443
+      - 8001:8001
+      - 8444:8444
+    links:
+      - kong-database:kong-database
+    networks:
+      - microservice
+    depends_on:
+      - kong-migrations
+
+  konga:
+    image: pantsel/konga
+    ports:
+      - 1337:1337
+    links:
+      - kong:kong
+    container_name: konga_server
+    environment:
+      - NODE_ENV=production
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_server
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - microservice
+
+  service_1:
+    build: 
+      context: ./service_1
+    container_name: service_1
+    networks:
+      - microservice
+    volumes:
+      - ./service_1:/var/www
+    ports:
+      - "9501:9501"
+#    command: "php bin/hyperf.php start"
+    tty: true
+
+  service_2:
+    build:
+      context: ./service_2
+    container_name: service_2
+    networks:
+      - microservice
+    volumes:
+      - ./service_2:/var/www
+    ports:
+      - "9502:9502"
+#    command: "php bin/hyperf.php start"
+    tty: true
+
+volumes:
+  db-data-kong-postgres:
+
+networks:
+  microservice:
+    external: false
