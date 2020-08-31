@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="109800cd-9f30-4858-b3c9-22a228d04d51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/micro-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/micro-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_1/app/JsonRpc/CalculatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/app/JsonRpc/CalculatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_1/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_1/config/autoload/consul.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/config/autoload/consul.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_1/config/autoload/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/service_1/config/autoload/server.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +151,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php-microservice-demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -167,6 +160,9 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\php_project\micro-service" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\php_project\micro-service\service_1" />
     </key>
@@ -193,7 +189,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598451098902</updated>
-      <workItem from="1598451102213" duration="11051000" />
+      <workItem from="1598451102213" duration="11828000" />
     </task>
     <servers />
   </component>
