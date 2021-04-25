@@ -9,86 +9,86 @@ services:
 #      - DNS_PORT=8600
     networks:
       chat:
-#        ipv4_address: "172.18.0.2"
+        ipv4_address: "172.18.0.2"
     ports:
       - 8500:8500
       - 8600:8600
 
-#  kong-database:
-#    image: postgres:9.6
-#    container_name: kong_database
-#    ports:
-#      - 5432:5432
-#    environment:
-#      - POSTGRES_USER=kong
-#      - POSTGRES_DB=kong
-#      - POSTGRES_PASSWORD=kong
-#    networks:
-#      chat:
-#        ipv4_address: "172.18.0.3"
-#    volumes:
-#      - "db-data-kong-postgres:/var/lib/postgresql/data"
-#
-#  kong-migrations:
-#    container_name: kong_migrations
-#    image: kong
-#    environment:
-#      - KONG_DATABASE=postgres
-#      - KONG_PG_HOST=kong-database
-#      - KONG_PG_PASSWORD=kong
-#      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
-#    command: kong migrations bootstrap
-#    restart: on-failure
-#    networks:
-#      chat:
-#        ipv4_address: "172.18.0.4"
-#    depends_on:
-#      - kong-database
-#
-#  kong:
-#    image: kong
-#    container_name: kong
-#    environment:
-#      - LC_CTYPE=en_US.UTF-8
-#      - LC_ALL=en_US.UTF-8
-#      - KONG_DATABASE=postgres
-#      - KONG_PG_HOST=kong-database
-#      - KONG_PG_USER=kong
-#      - KONG_PG_PASSWORD=kong
-#      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
-#      - KONG_PROXY_ACCESS_LOG=/dev/stdout
-#      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
-#      - KONG_PROXY_ERROR_LOG=/dev/stderr
-#      - KONG_ADMIN_ERROR_LOG=/dev/stderr
-#      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
-#      - KONG_DNS_RESOLVER=172.18.0.2:8600
-#    restart: on-failure
-#    ports:
-#      - 80:8000
-#      - 443:8443
-#      - 8001:8001
-#      - 8444:8444
-#    links:
-#      - kong-database:kong-database
-#      - consul:consul
-#    networks:
-#      chat:
-#        ipv4_address: "172.18.0.5"
-#    depends_on:
-#      - kong-migrations
-#
-#  konga:
-#    image: pantsel/konga
-#    ports:
-#      - 1337:1337
-#    links:
-#      - kong:kong
-#    container_name: konga
-#    environment:
-#      - NODE_ENV=production
-#    networks:
-#      chat:
-#        ipv4_address: "172.18.0.6"
+  kong-database:
+    image: postgres:9.6
+    container_name: kong_database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - POSTGRES_PASSWORD=kong
+    networks:
+      chat:
+        ipv4_address: "172.18.0.3"
+    volumes:
+      - "db-data-kong-postgres:/var/lib/postgresql/data"
+
+  kong-migrations:
+    container_name: kong_migrations
+    image: kong
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_PASSWORD=kong
+      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+    command: kong migrations bootstrap
+    restart: on-failure
+    networks:
+      chat:
+        ipv4_address: "172.18.0.4"
+    depends_on:
+      - kong-database
+
+  kong:
+    image: kong
+    container_name: kong
+    environment:
+      - LC_CTYPE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_USER=kong
+      - KONG_PG_PASSWORD=kong
+      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - KONG_DNS_RESOLVER=172.18.0.2:8600
+    restart: on-failure
+    ports:
+      - 80:8000
+      - 443:8443
+      - 8001:8001
+      - 8444:8444
+    links:
+      - kong-database:kong-database
+      - consul:consul
+    networks:
+      chat:
+        ipv4_address: "172.18.0.5"
+    depends_on:
+      - kong-migrations
+
+  konga:
+    image: pantsel/konga
+    ports:
+      - 1337:1337
+    links:
+      - kong:kong
+    container_name: konga
+    environment:
+      - NODE_ENV=production
+    networks:
+      chat:
+        ipv4_address: "172.18.0.6"
 
   mysql:
     image: mysql:5.7
@@ -97,7 +97,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
     networks:
       chat:
-#        ipv4_address: "172.18.0.7"
+        ipv4_address: "172.18.0.7"
 
   customer:
     build:
@@ -105,7 +105,7 @@ services:
     container_name: customer
     networks:
       chat:
-#        ipv4_address: "172.18.0.8"
+        ipv4_address: "172.18.0.8"
     volumes:
       - ./customer:/var/www
     ports:
@@ -133,7 +133,7 @@ services:
     container_name: common
     networks:
       chat:
-#        ipv4_address: "172.18.0.10"
+        ipv4_address: "172.18.0.10"
     volumes:
       - ./common:/var/www
     #    ports:
@@ -147,7 +147,7 @@ volumes:
 networks:
   chat:
 #    external: false
-#    ipam:
-#      driver: default
-#      config:
-#        - subnet: "172.18.0.0/24"
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.18.0.0/24"
