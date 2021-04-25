@@ -90,14 +90,21 @@ services:
       chat:
         ipv4_address: "172.18.0.6"
 
-  mysql:
+  customer_database:
     image: mysql:5.7
-    container_name: customer_db
+    container_name: customer_database
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:
       chat:
         ipv4_address: "172.18.0.7"
+
+  customer_redis:
+    image: redis:latest
+    container_name: customer_redis
+    networks:
+      chat:
+        ipv4_address: "172.18.0.11"
 
   customer:
     build:

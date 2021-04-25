@@ -1,4 +1,4 @@
-FROM hyperf/hyperf:latest
+FROM hyperf/hyperf:7.4-alpine-v3.12-swoole-v4.6.6
 
 # Change timezone
 RUN set -x; \
