@@ -108,7 +108,7 @@ services:
 
   customer:
     build:
-      context: ./customer
+      context: .
     container_name: customer
     networks:
       chat:
@@ -122,7 +122,7 @@ services:
 
   chat:
     build:
-      context: ./chat
+      context: .
     container_name: chat
     networks:
       chat:
@@ -136,7 +136,7 @@ services:
 
   common:
     build:
-      context: ./common
+      context: .
     container_name: common
     networks:
       chat:
