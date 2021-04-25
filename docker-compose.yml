@@ -4,135 +4,150 @@ services:
   consul:
     image: consul:latest
     command: "agent -server -bootstrap -ui -node=consul-server-leader -client=0.0.0.0"
-    container_name: consul_server
-    environment: 
-      - CONSUL_DNS_PORT=53
-    networks:
-      - microservice
-    ports:
-      - "8500:8500"
-      - "53:53"
-
-  # kong-database:
-  #   image: postgres:9.6
-  #   container_name: kong_database_server
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     - POSTGRES_USER=kong
-  #     - POSTGRES_DB=kong
-  #     - POSTGRES_PASSWORD=kong
-  #   networks:
-  #     - microservice
-  #   volumes:
-  #     - "db-data-kong-postgres:/var/lib/postgresql/data"
-
-  # kong-migrations:
-  #   container_name: kong_migrations
-  #   image: kong
-  #   environment:
-  #     - KONG_DATABASE=postgres
-  #     - KONG_PG_HOST=kong-database
-  #     - KONG_PG_PASSWORD=kong
-  #     - KONG_CASSANDRA_CONTACT_POINTS=kong-database
-  #   command: kong migrations bootstrap
-  #   restart: on-failure
-  #   networks:
-  #     - microservice
-  #   depends_on:
-  #     - kong-database
-
-  # kong:
-  #   image: kong
-  #   container_name: kong_server
-  #   environment:
-  #     - LC_CTYPE=en_US.UTF-8
-  #     - LC_ALL=en_US.UTF-8
-  #     - KONG_DATABASE=postgres
-  #     - KONG_PG_HOST=kong-database
-  #     - KONG_PG_USER=kong
-  #     - KONG_PG_PASSWORD=kong
-  #     - KONG_CASSANDRA_CONTACT_POINTS=kong-database
-  #     - KONG_PROXY_ACCESS_LOG=/dev/stdout
-  #     - KONG_ADMIN_ACCESS_LOG=/dev/stdout
-  #     - KONG_PROXY_ERROR_LOG=/dev/stderr
-  #     - KONG_ADMIN_ERROR_LOG=/dev/stderr
-  #     - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
-  #     - KONG_DNS_RESOLVER=192.168.43.208:53
-  #   restart: on-failure
-  #   ports:
-  #     - 8000:8000
-  #     - 8443:8443
-  #     - 8001:8001
-  #     - 8444:8444
-  #   links:
-  #     - kong-database:kong-database
-  #     - consul:consul
-  #   networks:
-  #     - microservice
-  #   depends_on:
-  #     - kong-migrations
-
-  # konga:
-  #   image: pantsel/konga
-  #   ports:
-  #     - 1337:1337
-  #   links:
-  #     - kong:kong
-  #   container_name: konga_server
-  #   environment:
-  #     - NODE_ENV=production
-
-#  mysql:
-#    image: mysql:5.7
-#    container_name: mysql_server
+    container_name: consul
 #    environment:
-#      MYSQL_ROOT_PASSWORD: root
-#    networks:
-#      - microservice
-
-  api:
-    build: 
-      context: ./api
-    container_name: api
+#      - DNS_PORT=8600
     networks:
-      - microservice
-    volumes:
-      - ./api:/var/www
+      chat:
+#        ipv4_address: "172.18.0.2"
     ports:
-      - "9501:9501"
-#    command: "php bin/hyperf.php start"
-    tty: true
+      - 8500:8500
+      - 8600:8600
 
-  service_1:
-    build: 
-      context: ./service_1
-    container_name: service_1
-    networks:
-      - microservice
-    volumes:
-      - ./service_1:/var/www
+#  kong-database:
+#    image: postgres:9.6
+#    container_name: kong_database
 #    ports:
-#      - "9501:9501"
-#    command: "php bin/hyperf.php start"
-    tty: true
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_USER=kong
+#      - POSTGRES_DB=kong
+#      - POSTGRES_PASSWORD=kong
+#    networks:
+#      chat:
+#        ipv4_address: "172.18.0.3"
+#    volumes:
+#      - "db-data-kong-postgres:/var/lib/postgresql/data"
+#
+#  kong-migrations:
+#    container_name: kong_migrations
+#    image: kong
+#    environment:
+#      - KONG_DATABASE=postgres
+#      - KONG_PG_HOST=kong-database
+#      - KONG_PG_PASSWORD=kong
+#      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+#    command: kong migrations bootstrap
+#    restart: on-failure
+#    networks:
+#      chat:
+#        ipv4_address: "172.18.0.4"
+#    depends_on:
+#      - kong-database
+#
+#  kong:
+#    image: kong
+#    container_name: kong
+#    environment:
+#      - LC_CTYPE=en_US.UTF-8
+#      - LC_ALL=en_US.UTF-8
+#      - KONG_DATABASE=postgres
+#      - KONG_PG_HOST=kong-database
+#      - KONG_PG_USER=kong
+#      - KONG_PG_PASSWORD=kong
+#      - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+#      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+#      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+#      - KONG_PROXY_ERROR_LOG=/dev/stderr
+#      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+#      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+#      - KONG_DNS_RESOLVER=172.18.0.2:8600
+#    restart: on-failure
+#    ports:
+#      - 80:8000
+#      - 443:8443
+#      - 8001:8001
+#      - 8444:8444
+#    links:
+#      - kong-database:kong-database
+#      - consul:consul
+#    networks:
+#      chat:
+#        ipv4_address: "172.18.0.5"
+#    depends_on:
+#      - kong-migrations
+#
+#  konga:
+#    image: pantsel/konga
+#    ports:
+#      - 1337:1337
+#    links:
+#      - kong:kong
+#    container_name: konga
+#    environment:
+#      - NODE_ENV=production
+#    networks:
+#      chat:
+#        ipv4_address: "172.18.0.6"
 
-  service_2:
+  mysql:
+    image: mysql:5.7
+    container_name: customer_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      chat:
+#        ipv4_address: "172.18.0.7"
+
+  customer:
     build:
-      context: ./service_2
-    container_name: service_2
+      context: ./customer
+    container_name: customer
     networks:
-      - microservice
+      chat:
+#        ipv4_address: "172.18.0.8"
     volumes:
-      - ./service_2:/var/www
-#    ports:
-#      - "9502:9502"
-#    command: "php bin/hyperf.php start"
+      - ./customer:/var/www
+    ports:
+      - 9501:9501
+    #    command: "php bin/hyperf.php start"
+    tty: true
+
+  chat:
+    build:
+      context: ./chat
+    container_name: chat
+    networks:
+      chat:
+        ipv4_address: "172.18.0.9"
+    volumes:
+      - ./chat:/var/www
+    #    ports:
+    #      - "9501:9501"
+    #    command: "php bin/hyperf.php start"
+    tty: true
+
+  common:
+    build:
+      context: ./common
+    container_name: common
+    networks:
+      chat:
+#        ipv4_address: "172.18.0.10"
+    volumes:
+      - ./common:/var/www
+    #    ports:
+    #      - "9502:9502"
+    #    command: "php bin/hyperf.php start"
     tty: true
 
 volumes:
   db-data-kong-postgres:
 
 networks:
-  microservice:
-    external: false
+  chat:
+#    external: false
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: "172.18.0.0/24"
